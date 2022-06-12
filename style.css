@@ -1,0 +1,195 @@
+:root {
+  --theme-primary: rgb(251, 255, 18);
+  --theme-bg: #000000;
+}
+
+body,
+html {
+  min-height: 830px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--theme-bg);
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+}
+
+html {
+  background-image: url("https://images.hdqwalls.com/wallpapers/dark-batman-4k-31.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+  padding: 1rem 5rem;
+  display: flex;
+  flex: 1;
+  margin: 0 auto;
+  max-width: 1600px;
+  height: 100%;
+  width: 100%;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.container .wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 25px;
+  padding-block: 2em;
+}
+
+textarea {
+  position: relative;
+  border-radius: 1em;
+  width: 100%;
+  height: 100%;
+  background: url("https://wallpaperaccess.com/full/197277.jpg") no-repeat 100%;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.377);
+  background-blend-mode: multiply;
+  color: rgb(255, 255, 255);
+  margin: 0;
+  padding: 0.75em;
+  box-sizing: border-box;
+  border: 0.25em solid var(--theme-primary);
+  font-size: 1.25rem;
+  line-height: 25px;
+  margin-bottom: 15px;
+  resize: none;
+  box-shadow: 0 0 1em 0.0125em var(--theme-primary),
+    inset 0 0 1em 0.0125em var(--theme-primary);
+  outline: none;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+textarea::selection {
+  background-color: var(--theme-primary);
+  color: var(--theme-bg);
+}
+
+button {
+  position: relative;
+  flex: 1 1 auto;
+  margin: 0 0.2em;
+  height: 3em;
+  padding: 0.25em;
+  background: transparent;
+  border: 2px solid var(--theme-primary);
+  color: white;
+  font-weight: 900;
+  letter-spacing: 4px;
+  font-size: 23px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 15px;
+  transition: 300ms ease;
+  overflow: hidden;
+  box-shadow: 0 0 1em 0.0125em var(--theme-primary),
+    inset 0 0 1em 0.0125em var(--theme-primary);
+  transition: color 350ms ease;
+  transform: scale(100%) rotate(0deg);
+}
+button:hover,
+button:focus {
+  color: var(--theme-primary);
+  cursor: pointer;
+}
+
+.anim {
+  animation: batmanAnim 300ms ease-in-out;
+}
+
+.anim2 {
+  animation: batmanAnim 600ms cubic-bezier(0.42, 0, 0.69, 2.25);
+}
+
+@keyframes batmanAnim {
+  0%,
+  100% {
+    transform: scale(100%) rotate(0deg);
+  }
+  30%,
+  70% {
+    transform: scale(20%) rotate(359deg);
+  }
+  50% {
+    transform: scale(1%) rotate(180deg);
+  }
+}
+
+@keyframes batmanAnim2 {
+  0% {
+    transform: scale(0%) rotate(0deg);
+  }
+  30% {
+    transform: scale(20%) rotate(90deg);
+  }
+  50% {
+    transform: scale(60%) rotate(180deg);
+  }
+  70% {
+    transform: scale(80%) rotate(359deg);
+  }
+  100% {
+    transform: scale(100%) rotate(0deg);
+  }
+}
+#notification {
+  z-index: 99;
+  bottom: 1em;
+  right: 1em;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e1ff009b;
+  border: 0.25em solid var(--theme-primary);
+  border-left: 1em solid var(--theme-primary);
+  appearance: none;
+  font-size: 1.4em;
+  padding: 0.25em 1em;
+  border-radius: 0.5em;
+  text-align: center;
+  overflow: hidden;
+  animation: batmanAnim2 500ms ease-in;
+}
+
+#notification #text {
+  height: fit-content;
+  color: rgb(0, 0, 0);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    padding: 1em;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  button {
+    padding: 0.5rem;
+    font-size: 1em;
+  }
+  #notification {
+    width: 80%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    bottom: none;
+    right: none;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .container .wrapper {
+    flex-direction: column;
+  }
+}
