@@ -5,6 +5,9 @@ const notification = document.querySelector("#notification");
 const notification_message = notification.querySelector("#text");
 const clear = document.querySelector("#clear");
 const btns = document.querySelectorAll(".button");
+const menu = document.querySelector("#navigation"),
+  menu_content = document.querySelector("#navigation-content"),
+  menu_stateButton = document.querySelector("#navigation-button");
 
 const messages = {
   emptyError: "Najpierw coś napisz!",
@@ -49,7 +52,7 @@ btn.addEventListener("click", (e) => {
       .replace(/^\s+/g, "")
       .replace(/(\+){2}/g, " - = - 1") //TODO ++a
       .replace(/(\-){2}/g, " + = - 1") //TODO --a
-      .replace("&&", `AND !1.420==13.37 AND "Pablo"=="Pablo" AND`)
+      .replace("&&", `&& !1.420==13.37 && "Pablo"=="Pablo" &&`)
       .replace(
         "true",
         `!(!(!(1 == 1 && (2*2)/4==2*2*2*2*2*2*8+16/(int)3.0) || "siquel" == "siquel op"))`
@@ -95,6 +98,12 @@ copy.addEventListener("click", () => {
   showNotification(messages.copied);
 });
 
+menu_stateButton.addEventListener("click", (e) => {
+  e.target.querySelector("i").classList.toggle("fa-angle-right");
+  e.target.querySelector("i").classList.toggle("fa-angle-left");
+  toggleMenu();
+});
+
 function showNotification(message) {
   if (!isShowing) {
     isShowing = true;
@@ -106,4 +115,10 @@ function showNotification(message) {
     }, 3000);
   }
   notification.innerText = message;
+}
+
+let menuShown = true;
+function toggleMenu() {
+  menu.classList.toggle("hidden");
+  menuShown = !menuShown;
 }

@@ -3,6 +3,121 @@
   --theme-bg: #000000;
 }
 
+#navigation {
+  width: 12rem;
+  padding: 1em 1em 1em 0;
+  border-right: 0.125em solid var(--theme-primary);
+  height: 100%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  transition: width 150ms ease-in-out;
+  transform-origin: left;
+}
+
+#navigation-button {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 100%;
+  top: 1rem;
+  padding: 0.125em 1em;
+  aspect-ratio: 1 / 1;
+  background-color: transparent;
+  border: 2px solid var(--theme-primary);
+  border-left: 0;
+  border-radius: 0 1em 1em 0;
+  cursor: pointer;
+}
+#navigation #navigation-content {
+  width: 100%;
+  height: 100%;
+  gap: 0.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+#navigation.hidden > *:not(#navigation-button) {
+  display: none;
+  width: 0;
+}
+#navigation.hidden {
+  width: 0;
+  padding: 0;
+}
+
+.navigation-header {
+  overflow: hidden;
+  display: block;
+  text-align: center;
+  position: relative;
+  height: 4rem;
+  width: 100%;
+}
+
+.neonText {
+  font-size: 1.5em;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  padding: auto;
+  color: var(--theme-primary);
+  font-weight: 900;
+  text-shadow: 0 0 0.125em 1em var(--theme-primary);
+}
+#navigation-button > i {
+  pointer-events: none;
+  color: #fff;
+  font-size: 1.5em;
+}
+#navigation-button:hover > i {
+  color: #fff;
+  font-size: 1.5em;
+  transform: rotate(180deg);
+  transition: transform 150ms ease-in-out;
+}
+
+.button {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  margin: 0 0.2em;
+  max-height: 3em;
+  padding: 0.25em;
+  background: transparent;
+  border: 2px solid var(--theme-primary);
+  color: white;
+  font-weight: 900;
+  letter-spacing: 4px;
+  font-size: 23px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 15px;
+  transition: 300ms ease;
+  overflow: hidden;
+  transition: color 350ms ease;
+  transform: scale(100%) rotate(0deg);
+}
+button:hover,
+button:focus {
+  color: var(--theme-primary);
+  text-shadow: 0 0 0.7em var(--theme-primary);
+  cursor: pointer;
+  background-color: #ffffff50;
+}
+
+@media screen and (max-width: 860px) {
+  #navigation {
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    background-color: #0000009f;
+  }
+
+  #navigation-button {
+    display: none;
+  }
+}
+
 body,
 html {
   min-height: 830px;
@@ -12,6 +127,10 @@ html {
   padding: 0;
   margin: 0;
   overflow: auto;
+}
+
+body {
+  display: flex;
 }
 
 html {
@@ -35,14 +154,6 @@ html {
   width: 100%;
   flex-direction: column-reverse;
   align-items: center;
-}
-
-.container .wrapper {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  gap: 25px;
-  padding-block: 2em;
 }
 
 textarea {
@@ -75,35 +186,8 @@ textarea::selection {
   color: var(--theme-bg);
 }
 
-button {
-  position: relative;
-  flex: 1 1 auto;
-  margin: 0 0.2em;
-  height: 3em;
-  padding: 0.25em;
-  background: transparent;
-  border: 2px solid var(--theme-primary);
-  color: white;
-  font-weight: 900;
-  letter-spacing: 4px;
-  font-size: 23px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  border-radius: 15px;
-  transition: 300ms ease;
-  overflow: hidden;
-  box-shadow: 0 0 1em 0.0125em var(--theme-primary),
-    inset 0 0 1em 0.0125em var(--theme-primary);
-  transition: color 350ms ease;
-  transform: scale(100%) rotate(0deg);
-}
-button:hover,
-button:focus {
-  color: var(--theme-primary);
-  cursor: pointer;
-}
-
 .anim {
-  animation: batmanAnim 300ms ease-in-out;
+  animation: batmanAnim 950ms ease-in-out;
 }
 
 .anim2 {
@@ -142,7 +226,7 @@ button:focus {
   }
 }
 #notification {
-  z-index: 99;
+  z-index: 101;
   bottom: 1em;
   right: 1em;
   position: fixed;
@@ -166,30 +250,4 @@ button:focus {
   color: rgb(0, 0, 0);
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-}
-
-@media screen and (max-width: 900px) {
-  .container {
-    padding: 1em;
-  }
-}
-
-@media screen and (max-width: 670px) {
-  button {
-    padding: 0.5rem;
-    font-size: 1em;
-  }
-  #notification {
-    width: 80%;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    bottom: none;
-    right: none;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .container .wrapper {
-    flex-direction: column;
-  }
 }
