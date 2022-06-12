@@ -2,8 +2,6 @@
 
 ## features
 
----
-
 - batman theme!
 - inline code
 - replace line comments with block ones
@@ -17,8 +15,6 @@
     - decrementation: `x--` ->` x - = 1`
 
 ## TODO-list
-
----
 
 - incrementation & decrementation fix
   - bug: `++x` -> `- = - 1x`
