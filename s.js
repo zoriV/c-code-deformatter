@@ -9,6 +9,11 @@ const menu = document.querySelector("#navigation"),
   menu_content = document.querySelector("#navigation-content"),
   menu_stateButton = document.querySelector("#navigation-button");
 
+let isMobile = window.innerWidth <= 860 ? true : false;
+window.addEventListener("resize", () => {
+  let width = window.innerWidth;
+  isMobile = width <= 860 ? true : false;
+});
 const messages = {
   emptyError: "Najpierw coś napisz!",
   formatted: "Pomyślnie z(de)formatowano zawartość!",
@@ -80,6 +85,7 @@ btn.addEventListener("click", (e) => {
 });
 
 clear.addEventListener("click", () => {
+  closeIfMobile();
   if (textarea.value === "") {
     showNotification(messages.emptyError);
     return;
@@ -90,6 +96,7 @@ clear.addEventListener("click", () => {
 });
 
 copy.addEventListener("click", () => {
+  closeIfMobile();
   if (textarea.value === "") {
     showNotification(messages.emptyError);
     return;
@@ -121,4 +128,12 @@ let menuShown = true;
 function toggleMenu() {
   menu.classList.toggle("hidden");
   menuShown = !menuShown;
+}
+
+function hideMenu() {
+  if (!menu.classList.contains("hidden")) menu.classList.add("hidden");
+}
+
+function closeIfMobile() {
+  if (isMobile) hideMenu();
 }
